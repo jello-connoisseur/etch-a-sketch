@@ -14,5 +14,16 @@ function makeGrid(){
 makeGrid();
 
 
+const grids = document.querySelectorAll('.grid');
+grids.forEach((grid) =>{
+    grid.addEventListener('mouseenter', () => {
+        grid.style.background = "purple";
+    });
+})
+//.addEventListener("mouseenter", function( event ) {
+    // highlight the mouseenter target
+    // event.target.style.color = "purple";
+
+
 
 
