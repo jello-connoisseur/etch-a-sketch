@@ -7,13 +7,15 @@
     height: 800px;
     width: 800px;
 
+    border: solid 1px;
+
 }
 
 .grid{
 
     border: solid 0.5px;
-    height: 198px;
-    width: 198px;
+    height: 48px;
+    width: 48px;
     flex-shrink: 1;
 
 } 
