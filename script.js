@@ -7,8 +7,11 @@ console.log(container);
 
 //make grid
 function makeGrid(num){
+    //column
     for (let i = 0; i < num; i++){
+        //row
         for (let j = 0; j < num; j++){
+            //create "num" amount of grids
             const grid = document.createElement('div');
             grid.classList.add('grid');
 
@@ -18,88 +21,46 @@ function makeGrid(num){
             container.appendChild(grid);
         }
     }
+    //call hover function to start sketching
     hover();
 
 }
+
+//initial grid is 16x16
 makeGrid(16);
+
 
 // clears grid when button clicked
 const gridChangeBtn = document.querySelector('button');
+//when button is clicked,
 gridChangeBtn.addEventListener('click', () => {
-    promptNewGrid();
-    gridReset();
-    
-
-})
-//
-function promptNewGrid() {
-
-    let gridChange = prompt("Enter new Grid Dimension!");
-    return gridChange;
-    window.gridChange = gridChange;
-
-
-}
-
-function gridReset() {
+    //select all grids
     const grids = document.querySelectorAll('.grid');
+    //iterate over each grid and remove
     grids.forEach(grid => {
         grid.remove();
     })
+
+    //prompt user for dimension
+    let gridChange = prompt("Enter new Grid Dimension!");
+    //take input and make another grid
     makeGrid(gridChange);
-    
-}
-//hover
+
+})
+
+//hover effect
 function hover(){
+    //select all grids
     const grids = document.querySelectorAll('.grid');
+    //iterate over each grid
     grids.forEach((grid) =>{
-    grid.addEventListener('mouseenter', (e) => {
-
-            if (e.target.style.background === "") {
-                e.target.style.background = 'black';
-            } 
-        });
-    })
+        //when mouse enters each grid run this function
+        grid.addEventListener('mouseenter', (e) => {
+                //if target's background is blank, color it black
+                if (e.target.style.background === "") {
+                    e.target.style.background = 'black';
+                } 
+            });
+        })
 }
-
-
-// let gridChange = prompt("Enter new Grid Dimension!");
-// makeGrid(gridChange);
-
-// gridChangeBtn.addEventListener('click', () => {
-//     grids.forEach(grid => {
-//         grid.remove();
-//     })
-// })
-
-
-
-
-
-
-// gets user input for grid granularity
-// function getDimension() {
-//     btn.addEventListener('click', () => {
-        
-        
-        
-
-//     });
-// }
-
-
-// btn.addEventListener('click', () => {
-//     makeGrid(getDimension());
-// });
-
-
-
-
-
-
-
-
-
-
-
 
