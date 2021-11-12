@@ -1,38 +1,102 @@
 const container = document.querySelector('#container');
+const grids = document.querySelectorAll('.grid');
+
+
 console.log(container);
 
-//making 16x16 grid
-function makeGrid(){
-    for (let i = 0; i < 16; i++){
-        for (let j = 0; j < 16; j++){
+
+//make grid
+function makeGrid(num){
+    for (let i = 0; i < num; i++){
+        for (let j = 0; j < num; j++){
             const grid = document.createElement('div');
             grid.classList.add('grid');
+
+            //need to subtract 0.5px borders on 4 sides = 2px 
+            grid.style.height = (800/num-2) + "px";
+            grid.style.width = (800/num-2) + "px";
             container.appendChild(grid);
         }
     }
+    hover();
+
 }
-makeGrid();
+makeGrid(16);
 
-//paints the grid black when hovered
-const grids = document.querySelectorAll('.grid');
-grids.forEach((grid) =>{
-    grid.addEventListener('mouseenter', () => {
-        grid.style.background = "black";
-    });
+// clears grid when button clicked
+const gridChangeBtn = document.querySelector('button');
+gridChangeBtn.addEventListener('click', () => {
+    promptNewGrid();
+    gridReset();
+    
+
 })
+//
+function promptNewGrid() {
 
-//clears grid when button clicked
-const btn = document.querySelector('button');
-btn.addEventListener('click', () => {
-    grids.forEach((grid) => {
-        grid.style.background = "white";
-    });
+    let gridChange = prompt("Enter new Grid Dimension!");
+    return gridChange;
+    window.gridChange = gridChange;
 
-});
 
-btn.addEventListener('click', () => {
-    console.log("hi");
-});
+}
+
+function gridReset() {
+    const grids = document.querySelectorAll('.grid');
+    grids.forEach(grid => {
+        grid.remove();
+    })
+    makeGrid(gridChange);
+    
+}
+//hover
+function hover(){
+    const grids = document.querySelectorAll('.grid');
+    grids.forEach((grid) =>{
+    grid.addEventListener('mouseenter', (e) => {
+
+            if (e.target.style.background === "") {
+                e.target.style.background = 'black';
+            } 
+        });
+    })
+}
+
+
+// let gridChange = prompt("Enter new Grid Dimension!");
+// makeGrid(gridChange);
+
+// gridChangeBtn.addEventListener('click', () => {
+//     grids.forEach(grid => {
+//         grid.remove();
+//     })
+// })
+
+
+
+
+
+
+// gets user input for grid granularity
+// function getDimension() {
+//     btn.addEventListener('click', () => {
+        
+        
+        
+
+//     });
+// }
+
+
+// btn.addEventListener('click', () => {
+//     makeGrid(getDimension());
+// });
+
+
+
+
+
+
 
 
 
