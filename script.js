@@ -41,12 +41,21 @@ gridChangeBtn.addEventListener('click', () => {
         grid.remove();
     })
 
-    //prompt user for dimension
-    let gridChange = prompt("Enter new Grid Dimension!");
-    //take input and make another grid
-    makeGrid(gridChange);
+    //prompt user for dimension & makes grid
+    pickGrid();    
 
 })
+
+function pickGrid(){
+    let gridChange = prompt("Enter new Grid Dimension!", "please pick between 2-100");
+
+    while (gridChange < 2 || gridChange > 100){
+        gridChange = prompt("that input is invalid, please pick between 2-100");
+    }
+    makeGrid(gridChange);
+
+
+}
 
 //hover effect
 function hover(){
