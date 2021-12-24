@@ -1,29 +1,14 @@
 
-  
 #container {
     display: flex;
     flex-wrap: wrap;
-
+    border: solid 1px;
     height: 800px;
     width: 800px;
-
-    border: solid 1px;
-
 }
 
 .grid{
+    border: solid 0.5px
 
-    border: solid 0.5px;
-    /* height: 48px;
-    width: 48px; */
-} 
-
-button{
-    font-size: 20px;
-    width: 100px;
-    height: 50px;
-    border: solid 1px;
-    margin-bottom: 10px;
-    margin-top: 10px;
 }
     
