@@ -6,8 +6,8 @@ function makeGrid(granularity){
             const grid = document.createElement("div");
             grid.setAttribute('class', 'grid');
 
-            grid.style.height = (800/granularity-2) +"px";
-            grid.style.width = (800/granularity-2) +"px";
+            grid.style.height = (600/granularity-2) +"px";
+            grid.style.width = (600/granularity-2) +"px";
             
             
             container.appendChild(grid);
@@ -18,7 +18,7 @@ function makeGrid(granularity){
     }
 }
 
-makeGrid(4);
+makeGrid(64);
 hover();
 
 function hover(){
@@ -28,6 +28,28 @@ function hover(){
             grid.style.background = 'black';
         })
     })
+}
+
+function clear(){
+    const grids = document.querySelectorAll(".grid");
+
+    grids.forEach((grid) => {
+        grid.remove();
+    })
+}
+
+function click(){
+    const btn = document.querySelector('button');
+    btn.addEventListener('click', () => {
+        const input = document.getElementById('granularity');
+        clear(); 
+        makeGrid(input.value);
+        input.value = '';
+        hover();
+    })  
 
 }
+
+click();
+
 
